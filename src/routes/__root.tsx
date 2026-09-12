@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "../components/site/site-header";
 import { SiteFooter } from "../components/site/site-footer";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { adsConfig } from "../lib/site";
 
 function NotFoundComponent() {
   return (
@@ -109,6 +110,13 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        {adsConfig.enabled ? (
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsConfig.clientId}`}
+            crossOrigin="anonymous"
+          />
+        ) : null}
       </head>
       <body>
         {children}
