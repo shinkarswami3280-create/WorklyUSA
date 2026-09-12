@@ -29,7 +29,7 @@ export const analyticsConfig = {
 };
 
 export const adsConfig = {
-  clientId: env['VITE_ADSENSE_CLIENT_ID'] ?? "",
+  clientId: env['VITE_ADSENSE_CLIENT_ID'] ?? "ca-pub-8663678721556695",
   get enabled() {
     return this.clientId.startsWith("ca-pub-");
   },
