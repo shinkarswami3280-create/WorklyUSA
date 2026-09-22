@@ -9,6 +9,7 @@ const navLinks = [
   { to: "/all-tools", label: "All Tools" },
   ...categories.map((category) => ({ to: `/category/${category.slug}`, label: category.label })),
   { to: "/guides", label: "Guides" },
+  { to: "/about", label: "About" },
 ];
 
 export function SiteHeader() {
@@ -18,7 +19,10 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/80 shadow-card backdrop-blur-xl">
       <div className="container-page flex h-16 items-center gap-4">
-        <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
+        <Link
+          to="/"
+          className="flex items-center gap-2 font-display text-lg font-bold tracking-tight"
+        >
           <span className="flex size-8 items-center justify-center rounded-lg bg-primary font-display text-sm text-primary-foreground">
             W
           </span>
@@ -48,7 +52,11 @@ export function SiteHeader() {
             aria-expanded={searchOpen}
             className="flex size-10 items-center justify-center rounded-lg text-foreground/80 transition-colors hover:bg-muted"
           >
-            {searchOpen ? <X className="size-5" aria-hidden="true" /> : <Search className="size-5" aria-hidden="true" />}
+            {searchOpen ? (
+              <X className="size-5" aria-hidden="true" />
+            ) : (
+              <Search className="size-5" aria-hidden="true" />
+            )}
             <span className="sr-only">{searchOpen ? "Close search" : "Search calculators"}</span>
           </button>
           <button
@@ -60,7 +68,11 @@ export function SiteHeader() {
             aria-expanded={menuOpen}
             className="flex size-10 items-center justify-center rounded-lg text-foreground/80 transition-colors hover:bg-muted lg:hidden"
           >
-            {menuOpen ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
+            {menuOpen ? (
+              <X className="size-5" aria-hidden="true" />
+            ) : (
+              <Menu className="size-5" aria-hidden="true" />
+            )}
             <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
           </button>
         </div>
