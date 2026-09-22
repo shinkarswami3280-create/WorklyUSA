@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { adsConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -26,8 +28,23 @@ interface AdSlotProps {
   slotId?: string;
 }
 
-export function AdSlot({ placement = "in-content", device = "all", className, slotId }: AdSlotProps) {
-  if (!adsConfig.enabled) return null;
+export function AdSlot({
+  placement = "in-content",
+  device = "all",
+  className,
+  slotId,
+}: AdSlotProps) {
+  useEffect(() => {
+    if (!adsConfig.enabled || !slotId) return;
+
+    try {
+      ((window as Window & { adsbygoogle?: unknown[] }).adsbygoogle ||= []).push({});
+    } catch {
+      // AdSense can be blocked by browser extensions; the content remains usable.
+    }
+  }, [slotId]);
+
+  if (!adsConfig.enabled || !slotId) return null;
 
   return (
     <aside
@@ -45,8 +62,14 @@ export function AdSlot({ placement = "in-content", device = "all", className, sl
       <p className="mb-2 text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
         Advertisement
       </p>
-      {/* Real AdSense markup mounts here once the account is approved. */}
-      <div className="h-full w-full" data-adsense-container="true" />
+      <ins
+        className="adsbygoogle block h-full w-full"
+        style={{ display: "block" }}
+        data-ad-client={adsConfig.clientId}
+        data-ad-slot={slotId}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
     </aside>
   );
 }

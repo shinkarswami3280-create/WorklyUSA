@@ -17,25 +17,29 @@ export const site = {
   name: "Workly USA",
   tagline: "Know Your Pay. Know Your Worth.",
   secondaryTagline: "Free work & paycheck calculators built for American workers.",
-  url: (env['VITE_SITE_URL'] ?? "https://worklyusa.com").replace(/\/$/, ""),
-  contactEmail: env['VITE_CONTACT_EMAIL'] ?? "worklyusa@gmail.com",
+  url: (env["VITE_SITE_URL"] ?? "https://worklyusa.com").replace(/\/$/, ""),
+  contactEmail: env["VITE_CONTACT_EMAIL"] ?? "worklyusa@gmail.com",
 };
 
 export const analyticsConfig = {
-  measurementId: env['VITE_GA_MEASUREMENT_ID'] ?? "",
+  measurementId: env["VITE_GA_MEASUREMENT_ID"] ?? "",
   get enabled() {
     return this.measurementId.length > 0;
   },
 };
 
 export const adsConfig = {
-  clientId: env['VITE_ADSENSE_CLIENT_ID'] ?? "ca-pub-8663678721556695",
+  clientId: env["VITE_ADSENSE_CLIENT_ID"] ?? "",
+  slots: {
+    top: env["VITE_ADSENSE_TOP_SLOT"] ?? "",
+    bottom: env["VITE_ADSENSE_BOTTOM_SLOT"] ?? "",
+  },
   get enabled() {
     return this.clientId.startsWith("ca-pub-");
   },
 };
 
-export const searchConsoleVerification = env['VITE_SEARCH_CONSOLE_VERIFICATION'] ?? "";
+export const searchConsoleVerification = env["VITE_SEARCH_CONSOLE_VERIFICATION"] ?? "";
 
 export const canonical = (path: string) =>
   `${site.url}${path === "/" ? "" : path.startsWith("/") ? path : `/${path}`}`;
