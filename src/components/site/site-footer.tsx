@@ -10,6 +10,9 @@ const legalLinks = [
   { to: "/cookie-policy", label: "Cookie Policy" },
   { to: "/terms", label: "Terms of Use" },
   { to: "/disclaimer", label: "Disclaimer" },
+  { to: "/pay-stub-glossary", label: "Pay Stub Glossary" },
+  { to: "/job-offer-checklist", label: "Offer Checklist" },
+  { to: "/editorial-standards", label: "Editorial Standards" },
 ];
 
 export function SiteFooter() {

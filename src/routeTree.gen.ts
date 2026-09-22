@@ -16,10 +16,14 @@ import { Route as AllToolsRouteImport } from './routes/all-tools'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as EditorialStandardsRouteImport } from './routes/editorial-standards'
 import { Route as GuidesRouteImport } from './routes/guides'
+import { Route as JobOfferChecklistRouteImport } from './routes/job-offer-checklist'
+import { Route as PayStubGlossaryRouteImport } from './routes/pay-stub-glossary'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as CategoryCategoryRouteImport } from './routes/category.$category'
+import { Route as GuideSlugRouteImport } from './routes/guide.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -56,9 +60,24 @@ const DisclaimerRoute = DisclaimerRouteImport.update({
   path: '/disclaimer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EditorialStandardsRoute = EditorialStandardsRouteImport.update({
+  id: '/editorial-standards',
+  path: '/editorial-standards',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GuidesRoute = GuidesRouteImport.update({
   id: '/guides',
   path: '/guides',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobOfferChecklistRoute = JobOfferChecklistRouteImport.update({
+  id: '/job-offer-checklist',
+  path: '/job-offer-checklist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PayStubGlossaryRoute = PayStubGlossaryRouteImport.update({
+  id: '/pay-stub-glossary',
+  path: '/pay-stub-glossary',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -76,6 +95,11 @@ const CategoryCategoryRoute = CategoryCategoryRouteImport.update({
   path: '/category/$category',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuideSlugRoute = GuideSlugRouteImport.update({
+  id: '/guide/$slug',
+  path: '/guide/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -85,10 +109,14 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/editorial-standards': typeof EditorialStandardsRoute
   '/guides': typeof GuidesRoute
+  '/job-offer-checklist': typeof JobOfferChecklistRoute
+  '/pay-stub-glossary': typeof PayStubGlossaryRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/terms': typeof TermsRoute
   '/category/$category': typeof CategoryCategoryRoute
+  '/guide/$slug': typeof GuideSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -98,10 +126,14 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/editorial-standards': typeof EditorialStandardsRoute
   '/guides': typeof GuidesRoute
+  '/job-offer-checklist': typeof JobOfferChecklistRoute
+  '/pay-stub-glossary': typeof PayStubGlossaryRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/terms': typeof TermsRoute
   '/category/$category': typeof CategoryCategoryRoute
+  '/guide/$slug': typeof GuideSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -112,10 +144,14 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/editorial-standards': typeof EditorialStandardsRoute
   '/guides': typeof GuidesRoute
+  '/job-offer-checklist': typeof JobOfferChecklistRoute
+  '/pay-stub-glossary': typeof PayStubGlossaryRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/terms': typeof TermsRoute
   '/category/$category': typeof CategoryCategoryRoute
+  '/guide/$slug': typeof GuideSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -127,10 +163,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/disclaimer'
+    | '/editorial-standards'
     | '/guides'
+    | '/job-offer-checklist'
+    | '/pay-stub-glossary'
     | '/privacy-policy'
     | '/terms'
     | '/category/$category'
+    | '/guide/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -140,10 +180,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/disclaimer'
+    | '/editorial-standards'
     | '/guides'
+    | '/job-offer-checklist'
+    | '/pay-stub-glossary'
     | '/privacy-policy'
     | '/terms'
     | '/category/$category'
+    | '/guide/$slug'
   id:
     | '__root__'
     | '/'
@@ -153,10 +197,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/disclaimer'
+    | '/editorial-standards'
     | '/guides'
+    | '/job-offer-checklist'
+    | '/pay-stub-glossary'
     | '/privacy-policy'
     | '/terms'
     | '/category/$category'
+    | '/guide/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -167,10 +215,14 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CookiePolicyRoute: typeof CookiePolicyRoute
   DisclaimerRoute: typeof DisclaimerRoute
+  EditorialStandardsRoute: typeof EditorialStandardsRoute
   GuidesRoute: typeof GuidesRoute
+  JobOfferChecklistRoute: typeof JobOfferChecklistRoute
+  PayStubGlossaryRoute: typeof PayStubGlossaryRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   TermsRoute: typeof TermsRoute
   CategoryCategoryRoute: typeof CategoryCategoryRoute
+  GuideSlugRoute: typeof GuideSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -224,11 +276,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DisclaimerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/editorial-standards': {
+      id: '/editorial-standards'
+      path: '/editorial-standards'
+      fullPath: '/editorial-standards'
+      preLoaderRoute: typeof EditorialStandardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guides': {
       id: '/guides'
       path: '/guides'
       fullPath: '/guides'
       preLoaderRoute: typeof GuidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/job-offer-checklist': {
+      id: '/job-offer-checklist'
+      path: '/job-offer-checklist'
+      fullPath: '/job-offer-checklist'
+      preLoaderRoute: typeof JobOfferChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pay-stub-glossary': {
+      id: '/pay-stub-glossary'
+      path: '/pay-stub-glossary'
+      fullPath: '/pay-stub-glossary'
+      preLoaderRoute: typeof PayStubGlossaryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -252,6 +325,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CategoryCategoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guide/$slug': {
+      id: '/guide/$slug'
+      path: '/guide/$slug'
+      fullPath: '/guide/$slug'
+      preLoaderRoute: typeof GuideSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -263,10 +343,14 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CookiePolicyRoute: CookiePolicyRoute,
   DisclaimerRoute: DisclaimerRoute,
+  EditorialStandardsRoute: EditorialStandardsRoute,
   GuidesRoute: GuidesRoute,
+  JobOfferChecklistRoute: JobOfferChecklistRoute,
+  PayStubGlossaryRoute: PayStubGlossaryRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   TermsRoute: TermsRoute,
   CategoryCategoryRoute: CategoryCategoryRoute,
+  GuideSlugRoute: GuideSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
